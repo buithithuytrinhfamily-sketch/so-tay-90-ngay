@@ -1,0 +1,394 @@
+<!doctype html><html lang="vi"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="theme-color" content="#C8102E"><title>Sổ Tay 90 Ngày Đọc Biểu Đồ</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,700;1,500&family=Be+Vietnam+Pro:wght@400;500;600;700&display=swap"><style>
+:root{
+  --bg:#FFFFFF; --paper:#FBF9F6; --ink:#1A1714; --ink-2:#5E574F; --rule:#E6E0D8;
+  --red:#C8102E; --red-soft:#FBE9EC; --green:#2E7D4F; --green-soft:#E6F2EA;
+  --gold:#A87B14; --gold-soft:#F7EFD9; --blue:#2A5D9F; --blue-soft:#E7EEF8;
+  --display:"Lora",Georgia,"Times New Roman",serif;
+  --body:"Be Vietnam Pro","Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;padding-block:0 80px;padding-inline:16px}
+a{color:var(--red)}
+.wrap{max-width:1040px;margin:0 auto}
+header.top{padding:28px 0 18px;border-bottom:2px solid var(--ink)}
+.eyebrow{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--red);font-weight:600}
+h1{font-family:var(--display);font-weight:700;font-size:clamp(30px,5vw,44px);line-height:1.1;margin:6px 0 10px;text-wrap:balance}
+.lede{max-width:62ch;color:var(--ink-2);margin:0 0 18px}
+.stats{display:flex;flex-wrap:wrap;gap:12px}
+.stat{flex:1 1 150px;border:1px solid var(--rule);background:var(--paper);padding:12px 14px}
+.stat b{display:block;font-family:var(--display);font-size:28px;line-height:1.1;font-variant-numeric:tabular-nums}
+.stat span{font-size:13px;color:var(--ink-2)}
+.bar{height:8px;background:var(--rule);margin-top:16px;position:relative}
+.bar i{display:block;height:100%;background:var(--red);width:0;transition:width .3s}
+.barlab{font-size:13px;color:var(--ink-2);margin-top:6px;font-variant-numeric:tabular-nums}
+.layout{display:grid;grid-template-columns:220px 1fr;gap:32px;margin-top:28px}
+nav.rail{position:sticky;top:12px;align-self:start;max-height:calc(100vh - 24px);overflow:auto;font-size:14px}
+nav.rail .ph{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);margin:14px 0 4px;font-weight:600}
+nav.rail .ph:first-child{margin-top:0}
+nav.rail a{display:flex;justify-content:space-between;gap:8px;color:var(--ink);text-decoration:none;padding:5px 8px;border-left:3px solid transparent}
+nav.rail a:hover{background:var(--paper)}
+nav.rail a.cur{border-left-color:var(--red);background:var(--paper);font-weight:600}
+nav.rail a small{color:var(--ink-2);font-variant-numeric:tabular-nums}
+nav.rail a.full small{color:var(--green);font-weight:600}
+main{min-width:0}
+.rules{border:1px solid var(--rule);background:var(--paper);padding:16px 18px;margin-bottom:28px}
+.rules h2{font-family:var(--display);font-size:20px;margin:0 0 8px}
+.rules ol{margin:0;padding-left:20px}
+.rules li{margin:4px 0}
+section.week{margin-bottom:36px;scroll-margin-top:12px}
+.weekhead{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;border-bottom:1px solid var(--ink);padding-bottom:6px;margin-bottom:12px}
+.weekhead .n{font-family:var(--display);font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--red);font-weight:700}
+.weekhead h2{font-family:var(--display);font-size:24px;margin:0;font-weight:700}
+.weekhead .goal{flex-basis:100%;color:var(--ink-2);font-size:15px}
+.day{border:1px solid var(--rule);margin-bottom:10px;background:var(--bg)}
+.day.done{background:var(--green-soft);border-color:#BFDCC9}
+.day.today{border-color:var(--red);box-shadow:0 0 0 2px var(--red-soft)}
+.dayhead{display:flex;align-items:center;gap:12px;padding:12px 14px;cursor:pointer;user-select:none}
+.dayhead .num{font-family:var(--display);font-weight:700;font-size:15px;min-width:64px;color:var(--ink-2);font-variant-numeric:tabular-nums}
+.day.done .num{color:var(--green)}
+.dayhead .ttl{flex:1;font-weight:600;line-height:1.3}
+.tag{font-size:11px;letter-spacing:.08em;text-transform:uppercase;padding:2px 7px;border:1px solid;white-space:nowrap}
+.tag.chart{color:var(--red);border-color:var(--red)}
+.tag.tien{color:var(--gold);border-color:var(--gold);background:var(--gold-soft)}
+.tag.so{color:var(--blue);border-color:var(--blue);background:var(--blue-soft)}
+.tag.on{color:var(--ink-2);border-color:var(--ink-2)}
+.chk{width:26px;height:26px;border:2px solid var(--ink-2);background:#fff;display:grid;place-items:center;flex:none;cursor:pointer;font-size:16px;color:#fff}
+.day.done .chk{background:var(--green);border-color:var(--green)}
+.daybody{display:none;padding:0 14px 16px 14px;border-top:1px dashed var(--rule)}
+.day.open .daybody{display:block}
+.daybody p{margin:10px 0;max-width:66ch}
+.lbl{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2);font-weight:600;margin-top:14px}
+.viec{border-left:3px solid var(--red);padding:6px 12px;margin:6px 0 0;background:var(--paper);max-width:66ch}
+.day.done .viec{border-left-color:var(--green)}
+figure{margin:12px 0 0;max-width:420px}
+figure svg{width:100%;height:auto;display:block;background:var(--paper);border:1px solid var(--rule)}
+figcaption{font-size:13px;color:var(--ink-2);margin-top:4px}
+textarea{width:100%;max-width:66ch;min-height:70px;font:inherit;font-size:15px;padding:8px 10px;border:1px solid var(--rule);background:#fff;color:var(--ink);resize:vertical;margin-top:6px}
+textarea:focus,button:focus-visible,.chk:focus-visible{outline:3px solid var(--blue-soft);outline-offset:1px;border-color:var(--blue)}
+.kq{display:flex;gap:8px;margin-top:6px;flex-wrap:wrap}
+.kq button{font:inherit;font-size:14px;padding:6px 12px;border:1px solid var(--ink-2);background:#fff;color:var(--ink);cursor:pointer}
+.kq button.sel-trung{background:var(--green);border-color:var(--green);color:#fff}
+.kq button.sel-lech{background:var(--red);border-color:var(--red);color:#fff}
+.sum{border:2px solid var(--ink);padding:16px 18px;margin-top:28px}
+.sum h2{font-family:var(--display);margin:0 0 6px;font-size:22px}
+.sum .big{font-family:var(--display);font-size:40px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1}
+.saved{position:fixed;right:16px;bottom:16px;font-size:13px;color:var(--ink-2);background:#fff;border:1px solid var(--rule);padding:6px 10px;opacity:0;transition:opacity .3s;pointer-events:none}
+.saved.show{opacity:1}
+.tools{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0 0}
+.tools button{font:inherit;font-size:14px;padding:6px 12px;border:1px solid var(--ink);background:#fff;cursor:pointer}
+@media (max-width:760px){.layout{grid-template-columns:1fr;gap:16px}nav.rail{position:static;max-height:none;display:flex;gap:4px;overflow-x:auto;padding-bottom:6px;border-bottom:1px solid var(--rule)}nav.rail .ph{display:none}nav.rail a{white-space:nowrap;border-left:0;border-bottom:3px solid transparent}nav.rail a.cur{border-bottom-color:var(--red)}.dayhead .num{min-width:52px;font-size:13px}}
+@media (prefers-reduced-motion:reduce){.bar i{transition:none}}
+</style></head><body>
+
+<div class="wrap">
+<header class="top">
+  <div class="eyebrow">Đầu tư kỹ thuật · Đầu tư nền tảng · Chi phí 0 đồng</div>
+  <h1>Sổ tay 90 ngày học đọc biểu đồ vàng</h1>
+  <p class="lede">Mỗi sáng một việc 15 phút, mở TradingView bản miễn phí, biểu đồ XAUUSD. Thứ Hai đến Thứ Bảy học đọc chart. Chủ nhật 30 phút làm bảng 4 ô tiền nhà mình. Tick xong là tự lưu.</p>
+  <div class="stats">
+    <div class="stat"><b id="sDone">0</b><span>việc đã xong / 90</span></div>
+    <div class="stat"><b id="sStreak">0</b><span>ngày liền nhau gần nhất</span></div>
+    <div class="stat"><b id="sTrung">0/0</b><span>đoán trùng kèo team (giai đoạn 3)</span></div>
+    <div class="stat"><b id="sTien">0/12</b><span>Chủ nhật bảng tiền đã làm</span></div>
+  </div>
+  <div class="bar"><i id="bar"></i></div>
+  <div class="barlab" id="barlab">0% chặng đường</div>
+</header>
+
+<div class="layout">
+<nav class="rail" id="rail"></nav>
+<main>
+  <div class="rules">
+    <h2>Ba luật của 90 ngày</h2>
+    <ol>
+      <li><b>Không nạp tiền thật.</b> Kể cả ít. Sách nói kỹ năng trước, tiền sau. Tài khoản của chị là giấy và ô ghi chú bên dưới.</li>
+      <li><b>Không mua khóa học.</b> Mọi thứ cần học đã có trong sổ này và trong kho nguồn em gom sẵn.</li>
+      <li><b>Sai là bình thường.</b> Mục tiêu tới ngày 90 là đoán trùng 6 trên 10 kèo của team, không phải 10 trên 10.</li>
+    </ol>
+  </div>
+  <div id="weeks"></div>
+  <div class="sum">
+    <h2>Chốt ngày 90</h2>
+    <div class="big" id="sumBig">0 / 90</div>
+    <p id="sumText">Chị chưa bắt đầu. Bấm vào Ngày 1 để mở việc đầu tiên.</p>
+    <div class="tools">
+      <button type="button" id="btnToday">Nhảy tới việc kế tiếp</button>
+      <button type="button" id="btnExport">Sao chép ghi chú ra văn bản</button>
+    </div>
+  </div>
+</main>
+</div>
+</div>
+<div class="saved" id="saved">Đã lưu</div>
+
+<script>
+// ---------- NỘI DUNG 90 NGÀY ----------
+// kind: chart = đọc biểu đồ, tien = Chủ nhật bảng tiền, so = đối chiếu kèo team, on = ôn tập
+const FIG = {
+nen:`<svg viewBox="0 0 300 140"><rect x="0" y="0" width="300" height="140" fill="#FBF9F6"/><line x1="70" y1="20" x2="70" y2="120" stroke="#2E7D4F" stroke-width="2"/><rect x="55" y="45" width="30" height="55" fill="#2E7D4F"/><text x="100" y="26" font-size="11" fill="#5E574F">cao nhất</text><text x="100" y="50" font-size="11" fill="#5E574F">đóng cửa</text><text x="100" y="102" font-size="11" fill="#5E574F">mở cửa</text><text x="100" y="124" font-size="11" fill="#5E574F">thấp nhất</text><line x1="220" y1="20" x2="220" y2="120" stroke="#C8102E" stroke-width="2"/><rect x="205" y="40" width="30" height="60" fill="#C8102E"/><text x="190" y="135" font-size="11" fill="#5E574F">nến đỏ: đóng thấp hơn mở</text><text x="40" y="135" font-size="11" fill="#5E574F">nến xanh</text></svg>`,
+len:`<svg viewBox="0 0 300 140"><rect width="300" height="140" fill="#FBF9F6"/><polyline points="20,110 60,70 90,90 130,45 160,65 200,25 230,45 275,15" fill="none" stroke="#1A1714" stroke-width="2"/><circle cx="60" cy="70" r="4" fill="#2E7D4F"/><circle cx="130" cy="45" r="4" fill="#2E7D4F"/><circle cx="200" cy="25" r="4" fill="#2E7D4F"/><circle cx="90" cy="90" r="4" fill="#C8102E"/><circle cx="160" cy="65" r="4" fill="#C8102E"/><circle cx="230" cy="45" r="4" fill="#C8102E"/><text x="20" y="132" font-size="11" fill="#5E574F">xanh = đỉnh cao dần, đỏ = đáy cao dần: xu hướng LÊN</text></svg>`,
+xuong:`<svg viewBox="0 0 300 140"><rect width="300" height="140" fill="#FBF9F6"/><polyline points="20,20 60,55 90,35 130,80 160,60 200,105 230,85 275,120" fill="none" stroke="#1A1714" stroke-width="2"/><circle cx="90" cy="35" r="4" fill="#C8102E"/><circle cx="160" cy="60" r="4" fill="#C8102E"/><circle cx="230" cy="85" r="4" fill="#C8102E"/><text x="20" y="135" font-size="11" fill="#5E574F">đỉnh thấp dần, đáy thấp dần: xu hướng XUỐNG</text></svg>`,
+hoTro:`<svg viewBox="0 0 300 140"><rect width="300" height="140" fill="#FBF9F6"/><line x1="10" y1="100" x2="290" y2="100" stroke="#2E7D4F" stroke-width="2" stroke-dasharray="6 4"/><polyline points="15,30 50,98 80,60 120,99 150,50 190,101 220,55 270,35" fill="none" stroke="#1A1714" stroke-width="2"/><text x="15" y="120" font-size="11" fill="#2E7D4F">hỗ trợ: giá rơi tới đây là bật lên, 3 lần</text></svg>`,
+khangCu:`<svg viewBox="0 0 300 140"><rect width="300" height="140" fill="#FBF9F6"/><line x1="10" y1="35" x2="290" y2="35" stroke="#C8102E" stroke-width="2" stroke-dasharray="6 4"/><polyline points="15,110 50,37 80,80 120,36 150,90 190,38 220,85 270,105" fill="none" stroke="#1A1714" stroke-width="2"/><text x="15" y="22" font-size="11" fill="#C8102E">kháng cự: giá lên tới đây là bị đẩy xuống</text></svg>`,
+hammer:`<svg viewBox="0 0 300 140"><rect width="300" height="140" fill="#FBF9F6"/><line x1="70" y1="30" x2="70" y2="125" stroke="#2E7D4F" stroke-width="2"/><rect x="58" y="30" width="24" height="22" fill="#2E7D4F"/><text x="95" y="40" font-size="11" fill="#5E574F">Hammer: thân nhỏ ở trên,</text><text x="95" y="56" font-size="11" fill="#5E574F">bấc dưới rất dài</text><text x="95" y="80" font-size="11" fill="#5E574F">Giá bị đạp xuống rồi</text><text x="95" y="96" font-size="11" fill="#5E574F">bị đẩy ngược lên: phe bán thua</text><line x1="230" y1="15" x2="230" y2="110" stroke="#C8102E" stroke-width="2"/><rect x="218" y="88" width="24" height="22" fill="#C8102E"/><text x="190" y="130" font-size="11" fill="#5E574F">Shooting star: ngược lại</text></svg>`,
+engulf:`<svg viewBox="0 0 300 140"><rect width="300" height="140" fill="#FBF9F6"/><line x1="60" y1="55" x2="60" y2="95" stroke="#C8102E" stroke-width="2"/><rect x="50" y="62" width="20" height="26" fill="#C8102E"/><line x1="100" y1="30" x2="100" y2="110" stroke="#2E7D4F" stroke-width="2"/><rect x="86" y="38" width="28" height="64" fill="#2E7D4F"/><text x="130" y="50" font-size="11" fill="#5E574F">Bullish engulfing:</text><text x="130" y="66" font-size="11" fill="#5E574F">nến xanh to nuốt trọn</text><text x="130" y="82" font-size="11" fill="#5E574F">nến đỏ nhỏ trước nó.</text><text x="130" y="104" font-size="11" fill="#5E574F">Tìm ở hỗ trợ.</text></svg>`,
+doji:`<svg viewBox="0 0 300 140"><rect width="300" height="140" fill="#FBF9F6"/><line x1="80" y1="25" x2="80" y2="115" stroke="#1A1714" stroke-width="2"/><rect x="66" y="68" width="28" height="3" fill="#1A1714"/><text x="120" y="55" font-size="11" fill="#5E574F">Doji: mở và đóng gần bằng nhau.</text><text x="120" y="75" font-size="11" fill="#5E574F">Không ai thắng.</text><text x="120" y="95" font-size="11" fill="#5E574F">Chờ nến sau quyết định.</text></svg>`,
+tamGiacTang:`<svg viewBox="0 0 300 140"><rect width="300" height="140" fill="#FBF9F6"/><line x1="20" y1="35" x2="230" y2="35" stroke="#C8102E" stroke-width="2"/><line x1="20" y1="120" x2="230" y2="42" stroke="#2E7D4F" stroke-width="2"/><polyline points="25,115 60,37 95,95 130,36 165,70 200,37 225,50 240,20 275,10" fill="none" stroke="#1A1714" stroke-width="2"/><text x="20" y="135" font-size="11" fill="#5E574F">Tam giác tăng: trần phẳng, đáy cao dần, thường phá LÊN</text></svg>`,
+tamGiacGiam:`<svg viewBox="0 0 300 140"><rect width="300" height="140" fill="#FBF9F6"/><line x1="20" y1="105" x2="230" y2="105" stroke="#2E7D4F" stroke-width="2"/><line x1="20" y1="20" x2="230" y2="98" stroke="#C8102E" stroke-width="2"/><polyline points="25,25 60,103 95,45 130,104 165,70 200,103 225,90 240,120 275,130" fill="none" stroke="#1A1714" stroke-width="2"/><text x="20" y="18" font-size="11" fill="#5E574F">Tam giác giảm: sàn phẳng, đỉnh thấp dần, thường phá XUỐNG</text></svg>`,
+haiDinh:`<svg viewBox="0 0 300 140"><rect width="300" height="140" fill="#FBF9F6"/><polyline points="15,115 60,30 100,80 140,30 185,95 230,125" fill="none" stroke="#1A1714" stroke-width="2"/><line x1="10" y1="80" x2="200" y2="80" stroke="#5E574F" stroke-dasharray="5 4"/><text x="60" y="22" font-size="11" fill="#C8102E">M</text><text x="140" y="22" font-size="11" fill="#C8102E">M</text><text x="15" y="135" font-size="11" fill="#5E574F">Hai đỉnh chữ M: hai lần không qua nổi, thủng đường cổ là xuống</text></svg>`,
+haiDay:`<svg viewBox="0 0 300 140"><rect width="300" height="140" fill="#FBF9F6"/><polyline points="15,25 60,110 100,60 140,110 185,45 230,15" fill="none" stroke="#1A1714" stroke-width="2"/><line x1="10" y1="60" x2="200" y2="60" stroke="#5E574F" stroke-dasharray="5 4"/><text x="15" y="135" font-size="11" fill="#5E574F">Hai đáy chữ W: hai lần không thủng nổi, vượt đường cổ là lên</text></svg>`,
+kenh:`<svg viewBox="0 0 300 140"><rect width="300" height="140" fill="#FBF9F6"/><line x1="10" y1="100" x2="290" y2="30" stroke="#1A1714" stroke-width="1.5"/><line x1="10" y1="130" x2="290" y2="60" stroke="#1A1714" stroke-width="1.5"/><polyline points="20,125 50,92 80,118 110,80 140,105 170,65 200,90 230,50 260,75 285,35" fill="none" stroke="#C8102E" stroke-width="2"/><text x="15" y="20" font-size="11" fill="#5E574F">Kênh giá: giá chạy giữa 2 đường song song, giống hình trong sách</text></svg>`,
+baKhung:`<svg viewBox="0 0 300 140"><rect width="300" height="140" fill="#FBF9F6"/><rect x="15" y="20" width="80" height="100" fill="#fff" stroke="#C8102E"/><rect x="110" y="20" width="80" height="100" fill="#fff" stroke="#1A1714"/><rect x="205" y="20" width="80" height="100" fill="#fff" stroke="#2A5D9F"/><text x="30" y="45" font-size="12" font-weight="bold" fill="#C8102E">H4</text><text x="30" y="65" font-size="10" fill="#5E574F">hướng:</text><text x="30" y="80" font-size="10" fill="#5E574F">lên / xuống</text><text x="30" y="95" font-size="10" fill="#5E574F">/ đợi</text><text x="125" y="45" font-size="12" font-weight="bold">H1</text><text x="125" y="65" font-size="10" fill="#5E574F">vẽ mốc</text><text x="125" y="80" font-size="10" fill="#5E574F">hỗ trợ và</text><text x="125" y="95" font-size="10" fill="#5E574F">kháng cự</text><text x="220" y="45" font-size="12" font-weight="bold" fill="#2A5D9F">M30</text><text x="220" y="65" font-size="10" fill="#5E574F">canh lúc</text><text x="220" y="80" font-size="10" fill="#5E574F">giá chạm mốc</text><text x="220" y="95" font-size="10" fill="#5E574F">và có nến</text><text x="98" y="75" font-size="14">→</text><text x="193" y="75" font-size="14">→</text><text x="15" y="135" font-size="11" fill="#5E574F">Đọc từ trên xuống, thứ tự không bao giờ đổi</text></svg>`,
+bonO:`<svg viewBox="0 0 300 140"><rect width="300" height="140" fill="#FBF9F6"/><rect x="20" y="15" width="120" height="50" fill="#fff" stroke="#1A1714"/><rect x="20" y="65" width="120" height="50" fill="#fff" stroke="#1A1714"/><rect x="160" y="15" width="60" height="100" fill="#fff" stroke="#1A1714"/><rect x="220" y="15" width="60" height="100" fill="#fff" stroke="#1A1714"/><text x="30" y="35" font-size="12" font-weight="bold">Thu nhập</text><text x="30" y="85" font-size="12" font-weight="bold">Chi phí</text><text x="166" y="35" font-size="11" font-weight="bold">Tài sản</text><text x="226" y="35" font-size="11" font-weight="bold">Tiêu sản</text><text x="20" y="133" font-size="11" fill="#5E574F">Báo cáo tài chính của chính nhà mình, giống trang 271</text></svg>`
+};
+
+const WEEKS = [
+{n:1,phase:"Giai đoạn 1 · Nến và xu hướng",t:"Làm quen với cây nến",goal:"Hết tuần chị nhìn 1 cây nến là biết giá đã làm gì trong ngày đó.",days:[
+{k:"chart",t:"Mở TradingView, tìm biểu đồ vàng",b:"TradingView bản miễn phí là đủ cho cả 90 ngày. Vào tradingview.com, bấm Chart, gõ XAUUSD ở ô tìm kiếm, chọn khung 1D (1 ngày). Mỗi cây nến trên màn hình là một ngày giao dịch của vàng.",v:"Mở được biểu đồ XAUUSD khung 1D. Ghi vào ô ghi chú: giá vàng hôm nay khoảng bao nhiêu (nhìn con số bên phải màn hình)."},
+{k:"chart",t:"Nến xanh và nến đỏ",b:"Nến xanh: giá đóng cửa cao hơn giá mở cửa, ngày đó phe mua thắng. Nến đỏ: đóng thấp hơn mở, phe bán thắng. Phần to gọi là thân, hai sợi mảnh trên dưới gọi là bấc.",v:"Đếm 10 cây nến gần nhất: bao nhiêu xanh, bao nhiêu đỏ. Ghi số vào ô ghi chú.",f:"nen"},
+{k:"chart",t:"Bốn con số trong một cây nến",b:"Mỗi cây nến chứa 4 giá: mở cửa, đóng cửa, cao nhất, thấp nhất. Rê chuột lên cây nến, góc trên trái màn hình hiện 4 số này (O, C, H, L). Thân nến chạy từ giá mở tới giá đóng. Bấc chạm giá cao nhất và thấp nhất.",v:"Rê chuột lên cây nến hôm qua, chép 4 số O, H, L, C vào ô ghi chú. Cây này xanh hay đỏ, vì sao?"},
+{k:"chart",t:"Thân to, thân nhỏ",b:"Thân nến to là ngày giá đi mạnh, một phe thắng áp đảo. Thân nhỏ với bấc dài là ngày giằng co, cả hai phe đều không giữ được giá. Chỉ cần nhìn thân to hay nhỏ, chị đã biết hôm đó thị trường quyết liệt hay lưỡng lự.",v:"Tìm trong 20 nến gần nhất: cây nào thân to nhất, cây nào thân nhỏ nhất. Ghi ngày của hai cây đó."},
+{k:"chart",t:"Đổi khung thời gian",b:"Cùng một biểu đồ, bấm 1D, 4H, 1H, 30 (phút) ở thanh trên. Khung càng nhỏ, mỗi cây nến càng ngắn thời gian và biểu đồ càng rối. Team HARCOS dùng 3 khung: H4, H1, M30. Hôm nay chị chỉ cần biết cách đổi qua lại.",v:"Đổi lần lượt 1D → 4H → 1H → 30. Ghi lại: ở khung nào chị thấy xu hướng rõ nhất bằng mắt thường."},
+{k:"chart",t:"Đỉnh và đáy",b:"Đỉnh là chỗ giá lên rồi quay đầu xuống, giống đỉnh núi. Đáy là chỗ giá xuống rồi quay đầu lên. Toàn bộ việc đọc xu hướng sau này chỉ là so các đỉnh với nhau và các đáy với nhau.",v:"Trên khung 1D, dùng công cụ vẽ (biểu tượng bút bên trái), đánh dấu 3 đỉnh và 3 đáy gần nhất. Chụp màn hình lưu vào máy."},
+{k:"tien",t:"Chủ nhật: ô Thu nhập",b:"Cột bên trái của sách, đầu tư nền tảng, bắt đầu bằng đọc báo cáo tài chính. Cách học rẻ nhất là viết báo cáo của chính nhà mình. Hôm nay chỉ một ô: thu nhập. Mọi tiền đi vào nhà trong 1 tháng, của chị và của chồng, kể cả lặt vặt.",v:"Liệt kê mọi nguồn thu nhập của gia đình trong tháng vừa rồi vào ô ghi chú. Chưa cần chính xác từng đồng, cần đủ dòng.",f:"bonO"}
+]},
+{n:2,phase:"Giai đoạn 1 · Nến và xu hướng",t:"Ba hướng của thị trường",goal:"Hết tuần chị nhìn khung H4 là nói được một chữ: lên, xuống, hay đợi.",days:[
+{k:"chart",t:"Xu hướng lên",b:"Giá lên không đi thẳng, nó leo bậc thang. Mỗi đỉnh mới cao hơn đỉnh trước, mỗi đáy mới cao hơn đáy trước. Hai điều đó cùng đúng thì gọi là xu hướng lên. Chỉ một trong hai đúng thì chưa chắc.",v:"Trên khung 1D, tìm một đoạn ít nhất 3 đỉnh cao dần và 3 đáy cao dần. Đánh dấu và ghi khoảng ngày.",f:"len"},
+{k:"chart",t:"Xu hướng xuống",b:"Ngược lại: đỉnh thấp dần, đáy thấp dần. Nhiều người mới chỉ nhìn nến đỏ nhiều là bảo xuống. Sai. Phải nhìn vị trí các đỉnh và đáy, không đếm màu nến.",v:"Tìm một đoạn xuống rõ trong 1 năm qua trên khung 1D. Ghi: đỉnh thấp dần mấy lần, đáy thấp dần mấy lần.",f:"xuong"},
+{k:"chart",t:"Đi ngang, tức là đợi",b:"Đỉnh và đáy chồng chéo, lúc cao lúc thấp không ra quy luật. Đây là lúc thị trường chưa quyết. Người giỏi không đoán lúc này, họ đợi. Chữ thứ ba trong bộ ba lên, xuống, đợi là chữ quan trọng nhất và khó nhất, vì nó đòi kiên nhẫn.",v:"Tìm một đoạn đi ngang trên khung 4H. Đếm xem nó kéo dài bao nhiêu cây nến trước khi chọn hướng."},
+{k:"chart",t:"Vẽ đường xu hướng",b:"Nối ít nhất 2 đáy lại với nhau khi giá đang lên, hoặc 2 đỉnh khi giá đang xuống, bằng công cụ Trend Line. Đường càng chạm nhiều đáy càng đáng tin. Đường này sau này là chỗ chị canh giá quay lại.",v:"Vẽ một đường nối các đáy trên khung 4H. Đường chạm được mấy đáy? Ghi số."},
+{k:"chart",t:"H4 cho một chữ",b:"Đây là bước 1 trong bộ 3 khung của team. Mở H4, nhìn 30 đến 50 cây nến gần nhất, so đỉnh và đáy, rồi nói ra đúng một chữ: lên, xuống, hoặc đợi. Không giải thích dài, không chần chừ.",v:"Ghi vào ô ghi chú: hôm nay H4 vàng nói chữ gì, và dựa vào đỉnh đáy nào.",f:"baKhung"},
+{k:"chart",t:"Dự đoán đầu tiên",b:"Hôm nay chị bắt đầu tài khoản giấy. Nhìn H4, đoán ngày mai giá vàng cao hơn hay thấp hơn giá hiện tại. Ghi con số hiện tại và dự đoán. Ngày mai mở lại xem đúng hay sai. Không có tiền nào mất, chỉ có kinh nghiệm cộng vào.",v:"Ghi: giá hiện tại, dự đoán ngày mai (cao hơn/thấp hơn), lý do một câu."},
+{k:"tien",t:"Chủ nhật: ô Chi phí",b:"Ô thứ hai: tiền đi ra khỏi nhà trong 1 tháng. Chia 3 nhóm cho dễ: cố định (nhà, điện, học phí con), ăn uống sinh hoạt, và lặt vặt không nhớ nổi. Nhóm thứ ba thường to hơn mình tưởng.",v:"Liệt kê chi phí tháng vừa rồi theo 3 nhóm. Hôm qua chị dự đoán giá vàng, hôm nay kiểm tra luôn: đúng hay sai?"}
+]},
+{n:3,phase:"Giai đoạn 1 · Nến và xu hướng",t:"Hỗ trợ và kháng cự",goal:"Hết tuần chị vẽ được 2 mốc trên H1 mà giá tôn trọng thật.",days:[
+{k:"chart",t:"Hỗ trợ là cái sàn",b:"Có những vùng giá cứ rơi tới đó là bật lên, như quả bóng chạm sàn. Gọi là hỗ trợ. Giá bật ở đó 2 lần trở lên mới tính. Trên H1, chị vẽ đường ngang (Horizontal Line) qua chỗ đó.",v:"Trên khung H1, tìm và vẽ 1 đường hỗ trợ mà giá đã bật lên ít nhất 2 lần. Ghi mức giá.",f:"hoTro"},
+{k:"chart",t:"Kháng cự là cái trần",b:"Ngược lại: giá lên tới đó là bị đẩy xuống, như bóng đụng trần. Hỗ trợ và kháng cự là 2 mốc Lead team vẽ mỗi sáng trên H1. Mọi kèo họ đăng đều có 2 đường này đứng sau.",v:"Vẽ 1 đường kháng cự trên H1 mà giá đã bị đẩy xuống ít nhất 2 lần. Ghi mức giá.",f:"khangCu"},
+{k:"chart",t:"Hai mốc, một cái hộp",b:"Vẽ cả hỗ trợ lẫn kháng cự, chị có một cái hộp. Giá đang ở đâu trong hộp? Gần sàn, gần trần, hay giữa hộp? Ở giữa hộp là khoảng trống, không ai làm gì ở đó. Chỉ sàn và trần mới đáng xem.",v:"Vẽ hộp trên H1 hôm nay. Ghi: giá đang gần sàn, gần trần hay giữa hộp."},
+{k:"chart",t:"Khi giá chạm mốc",b:"Giá chạm hỗ trợ có 2 kịch bản: bật lên (mốc giữ được) hoặc thủng (mốc gãy). Chị chưa cần đoán kịch bản nào. Chị chỉ cần nhận ra khoảnh khắc chạm, vì đó là lúc duy nhất đáng chú ý trong ngày.",v:"Tìm 3 lần gần nhất giá chạm một mốc trên H1. Mỗi lần: bật hay thủng? Ghi 3 kết quả."},
+{k:"chart",t:"Phá mốc thật hay giả",b:"Giá xuyên qua mốc một chút rồi quay lại gọi là phá giả, bẫy rất nhiều người. Phá thật là nến đóng cửa hẳn bên kia mốc, rồi nến sau tiếp tục đi. Nhớ chữ đóng cửa: nến còn đang chạy chưa tính.",v:"Tìm 1 lần phá giả và 1 lần phá thật trên H1 trong 2 tuần qua. Ghi lại cách chị phân biệt."},
+{k:"chart",t:"Mốc cũ đổi vai",b:"Kháng cự bị phá lên xong thường trở thành hỗ trợ mới. Hỗ trợ bị thủng xong thành kháng cự mới. Cái trần cũ thành cái sàn của tầng trên. Đây là một trong những điều hữu ích nhất chị học được trong cả 90 ngày.",v:"Tìm 1 ví dụ trên H4 nơi mốc cũ đổi vai. Vẽ và ghi mức giá."},
+{k:"tien",t:"Chủ nhật: ô Tài sản",b:"Tài sản theo sách là thứ bỏ tiền vào túi chị kể cả khi chị không làm gì. Tiền tiết kiệm, vàng đang giữ, phần góp vốn, kênh Telegram đang sinh tiền. Nhà đang ở không phải tài sản nếu nó không trả tiền cho chị hàng tháng.",v:"Liệt kê tài sản của gia đình theo đúng định nghĩa trên. Dòng nào chị không chắc, ghi dấu hỏi."}
+]},
+{n:4,phase:"Giai đoạn 1 · Nến và xu hướng",t:"Ba khung và nến tại mốc",goal:"Hết tuần chị đọc được 1 biểu đồ theo đúng quy trình team: H4, H1, M30, nến.",days:[
+{k:"chart",t:"Ghép 3 khung thành một quy trình",b:"H4 cho hướng. H1 cho mốc. M30 cho thời điểm. Hôm nay chị làm đủ cả ba lần đầu tiên: mở H4 nói một chữ, mở H1 vẽ 2 mốc, mở M30 xem giá đang gần mốc nào. Thứ tự này không đổi, bài ghim của kênh HARCOS cũng nói đúng vậy.",v:"Làm đủ 3 bước, ghi 3 dòng: H4 = ?, H1 = mốc nào, M30 = giá đang ở đâu so với mốc.",f:"baKhung"},
+{k:"chart",t:"Nến búa (hammer)",b:"Tại hỗ trợ, nếu xuất hiện cây nến thân nhỏ ở trên và bấc dưới rất dài, nghĩa là giá bị đạp xuống rồi bị đẩy ngược lên. Phe bán thua trận đó. Nến này chỉ có nghĩa khi đứng tại mốc, giữa khoảng trống nó chỉ là nhiễu.",v:"Tìm 1 cây hammer tại hỗ trợ trên H1 trong 2 tuần qua. Giá sau đó đi đâu?",f:"hammer"},
+{k:"chart",t:"Nến nuốt (engulfing)",b:"Nến xanh to nuốt trọn nến đỏ nhỏ ngay trước nó, tại hỗ trợ: phe mua vừa đổi cục diện. Ngược lại nến đỏ to nuốt nến xanh nhỏ tại kháng cự: phe bán đổi cục diện. Đây là mẫu nến team dùng nhiều nhất.",v:"Tìm 1 bullish engulfing tại hỗ trợ và 1 bearish engulfing tại kháng cự. Ghi ngày giờ.",f:"engulf"},
+{k:"chart",t:"Doji, nến lưỡng lự",b:"Giá mở và đóng gần bằng nhau, thân nến chỉ là một gạch mỏng. Không ai thắng. Gặp doji tại mốc, chị không kết luận gì, chị chờ cây nến sau. Cây sau đi hướng nào, thị trường chọn hướng đó.",v:"Tìm 3 doji trên H1. Với mỗi cây, nến sau nó xanh hay đỏ, và giá đi theo không?",f:"doji"},
+{k:"chart",t:"Bấc dài kể chuyện gì",b:"Quy tắc ngón tay cái: bấc dài phía nào, phe đó vừa bị từ chối. Bấc dưới dài: phe bán đã cố đạp nhưng thất bại. Bấc trên dài: phe mua đã cố đẩy nhưng thất bại. Chị không cần nhớ tên 20 loại nến, chỉ cần đọc bấc.",v:"Chọn 5 cây nến bấc dài trên H4. Mỗi cây ghi 1 câu: phe nào bị từ chối."},
+{k:"on",t:"Ôn tháng đầu: đọc trọn một biểu đồ",b:"Hôm nay không học mới. Chị mở biểu đồ, làm đủ quy trình và viết ra như đang giải thích cho một người bạn: H4 đang lên hay xuống, H1 có mốc nào, giá đang ở đâu, nến gần mốc nói gì, và kết luận của chị là gì. Viết 5 đến 8 câu.",v:"Viết bài đọc chart đầu tiên của chị vào ô ghi chú. Đây là mốc 1 tháng, giữ lại để tháng 3 so."},
+{k:"tien",t:"Chủ nhật: ô Tiêu sản",b:"Tiêu sản là thứ lấy tiền ra khỏi túi chị mỗi tháng: khoản vay, xe, thẻ tín dụng, các gói đăng ký không dùng. Sách nói người giàu mua tài sản, người nghèo mua tiêu sản mà tưởng là tài sản. Hôm nay chị nhìn thẳng vào cột này.",v:"Liệt kê tiêu sản và số tiền nó rút mỗi tháng. Bây giờ chị đã có đủ 4 ô."}
+]},
+{n:5,phase:"Giai đoạn 2 · Năm mẫu hình",t:"Tam giác tăng",goal:"Hết tuần chị nhận ra tam giác tăng trên chart thật và biết giá thường đi đâu sau nó.",days:[
+{k:"chart",t:"Nhận diện tam giác tăng",b:"Trần phẳng (kháng cự ngang), đáy cao dần (đường xu hướng đi lên). Phe mua ngày càng gấp, mỗi lần giá rớt họ mua lại ở mức cao hơn, trong khi phe bán cứ giữ một trần. Hình thu hẹp dần như cái nêm. Chữ Ascending Triangle ở góc trên tấm ảnh chị chụp chính là nó.",v:"Nhìn hình minh họa cho thuộc. Ghi bằng lời của chị: tam giác tăng gồm 2 đường gì.",f:"tamGiacTang"},
+{k:"chart",t:"Tìm nó trên chart vàng",b:"Kéo lùi biểu đồ H4 hoặc 1D về 6 tháng trước. Tìm chỗ nào giá bị chặn ở một trần nhiều lần trong khi đáy cứ cao dần. Lần đầu khó thấy, cứ nhìn hình mẫu rồi so. Tìm được 1 cái là thắng.",v:"Vẽ 2 đường của tam giác tăng lên chart thật. Chụp màn hình. Ghi khoảng ngày."},
+{k:"chart",t:"Sau tam giác tăng giá đi đâu",b:"Thường là phá lên, vì phe mua đang thắng thế. Nhưng thường không phải luôn luôn. Vì vậy người giỏi đợi nến đóng cửa trên trần rồi mới tin, không đoán trước. Mục tiêu giá sau khi phá thường bằng chiều cao của tam giác đo từ chỗ phá.",v:"Với tam giác chị tìm hôm qua: giá phá lên hay xuống? Đo chiều cao tam giác và xem giá có đi được chừng đó không."},
+{k:"chart",t:"Tam giác giả",b:"Không phải cái gì hẹp dần cũng là tam giác tăng. Cần ít nhất 2 lần chạm trần và 2 đáy cao dần thật rõ. Vẽ ép cho vừa hình là bẫy phổ biến nhất của người mới. Nếu phải cố, nó không phải tam giác.",v:"Tìm 1 chỗ trông giống tam giác tăng nhưng không đủ điều kiện. Ghi vì sao chị loại nó."},
+{k:"chart",t:"Dự đoán bằng tam giác",b:"Nhìn chart hiện tại trên H4 và H1. Có tam giác tăng nào đang hình thành không? Nếu có, ghi dự đoán. Nếu không, ghi không có, cũng là một câu trả lời đúng. Đừng ép chart phải có mẫu hình.",v:"Ghi: có hay không tam giác tăng đang hình thành, và nếu có thì chị dự đoán gì."},
+{k:"on",t:"Kiểm tra dự đoán tuần",b:"Mở lại mọi dự đoán chị đã ghi từ ngày 13 tới giờ. Đếm đúng, sai. Không chấm điểm, chỉ nhìn. Chị sẽ thấy sai nhiều ở chỗ nào: đoán khi H4 đang đợi, hay đoán giữa hộp không có mốc. Đó là bài học thật.",v:"Ghi: tổng dự đoán, số đúng, số sai, và 1 kiểu sai lặp lại nhiều nhất."},
+{k:"tien",t:"Chủ nhật: ghép 4 ô thành bảng tháng",b:"Giờ chị có đủ 4 ô. Ghép lại thành 1 trang như hình trang 271 trong sách. Thu nhập trừ chi phí ra số dư tháng. Tài sản trừ tiêu sản ra tình hình thật của nhà. Hai con số này là thứ sách gọi là hiểu biết tài chính.",v:"Viết 2 con số: số dư tháng, và tài sản trừ tiêu sản. Ghi cảm giác của chị khi nhìn hai số này, một câu.",f:"bonO"}
+]},
+{n:6,phase:"Giai đoạn 2 · Năm mẫu hình",t:"Tam giác giảm và tam giác cân",goal:"Hết tuần chị phân biệt được 3 loại tam giác chỉ bằng nhìn trần và sàn.",days:[
+{k:"chart",t:"Tam giác giảm",b:"Ngược với tuần trước: sàn phẳng (hỗ trợ ngang), đỉnh thấp dần. Phe bán ngày càng gấp, mỗi lần giá bật họ bán ở mức thấp hơn. Thường phá xuống. Chữ Descending Triangle trên tấm ảnh của chị là nó.",v:"Ghi bằng lời chị: tam giác giảm gồm 2 đường gì, khác tam giác tăng chỗ nào.",f:"tamGiacGiam"},
+{k:"chart",t:"Tìm tam giác giảm trên chart",b:"Kéo lùi H4 hoặc 1D, tìm chỗ giá bị chặn ở một sàn nhiều lần trong khi đỉnh thấp dần. Cùng cách tìm như tuần trước, chỉ lật ngược.",v:"Vẽ tam giác giảm lên chart thật. Giá sau đó phá xuống hay phá lên?"},
+{k:"chart",t:"Tam giác cân",b:"Cả trần lẫn sàn đều nghiêng vào nhau: đỉnh thấp dần, đáy cao dần. Hai phe cùng ngày càng gấp. Hình này không nói trước hướng, nó chỉ nói sắp có chuyện. Chị chờ nến đóng ngoài tam giác rồi đi theo hướng đó.",v:"Tìm 1 tam giác cân. Ghi: giá phá hướng nào, và chị có đoán trước được không (câu trả lời thật thà là không)."},
+{k:"chart",t:"Ba tam giác, một bảng so",b:"Tăng: trần phẳng, đáy lên, hay phá lên. Giảm: sàn phẳng, đỉnh xuống, hay phá xuống. Cân: cả hai nghiêng, chờ hướng. Chị viết bảng 3 dòng này bằng tay vào sổ giấy, để cạnh máy.",v:"Chép bảng 3 dòng vào ô ghi chú bằng lời của chị, không chép nguyên văn."},
+{k:"chart",t:"Tam giác và mốc đi cùng nhau",b:"Tam giác đáng tin hơn khi trần hoặc sàn của nó trùng với một mốc hỗ trợ kháng cự lớn trên H4. Mẫu hình đứng tại mốc lớn giống nến đứng tại mốc: có nghĩa. Mẫu hình giữa khoảng trống: nhiễu.",v:"Với 1 tam giác chị đã vẽ, kiểm tra: trần hoặc sàn của nó có trùng mốc H4 nào không?"},
+{k:"chart",t:"Dự đoán tuần này",b:"Nhìn H4 và H1 hôm nay. Có tam giác nào đang hình thành? Loại nào? Ghi dự đoán hoặc ghi không có.",v:"Ghi dự đoán và ngày để quay lại kiểm tra."},
+{k:"tien",t:"Chủ nhật: số dư đi đâu",b:"Sách nói khác biệt giữa người giàu và người nghèo không ở thu nhập, mà ở việc số dư được đem mua tài sản hay mua tiêu sản. Hôm nay chị truy xem số dư tháng vừa rồi, nếu có, đã đi đâu. Nếu không có số dư, truy xem chi phí nhóm lặt vặt lớn chừng nào.",v:"Ghi: số dư tháng trước đã dùng vào việc gì. Nó thành tài sản hay tiêu sản hay bốc hơi?"}
+]},
+{n:7,phase:"Giai đoạn 2 · Năm mẫu hình",t:"Hai đỉnh và hai đáy",goal:"Hết tuần chị nhận ra chữ M và chữ W trên chart và biết đường cổ là gì.",days:[
+{k:"chart",t:"Hai đỉnh, chữ M",b:"Giá lên tới một trần, rơi xuống, lên lại đúng trần đó lần nữa rồi lại rơi. Hai lần không qua nổi, hình chữ M. Đáy ở giữa chữ M gọi là đường cổ. Giá thủng đường cổ là mẫu hình xác nhận, thường rơi tiếp.",v:"Tìm 1 hai đỉnh trên H4 hoặc 1D. Vẽ đường cổ. Giá sau khi thủng cổ đi được bao xa?",f:"haiDinh"},
+{k:"chart",t:"Hai đáy, chữ W",b:"Lật ngược: giá rơi tới một sàn, bật lên, rơi lại đúng sàn rồi bật. Hai lần không thủng nổi, chữ W. Đỉnh giữa chữ W là đường cổ. Vượt đường cổ mới tính, trước đó chỉ là hai cái đáy.",v:"Tìm 1 hai đáy. Vẽ đường cổ. Giá sau khi vượt cổ đi được bao xa?",f:"haiDay"},
+{k:"chart",t:"Chưa qua cổ, chưa tính",b:"Lỗi phổ biến: thấy đỉnh thứ hai là hô hai đỉnh, vào ngay. Trong khi giá có thể lên tiếp thành đỉnh thứ ba. Mẫu hình chỉ hoàn thành khi nến đóng qua đường cổ. Tới lúc đó, đừng tin.",v:"Tìm 1 ví dụ trông như hai đỉnh nhưng giá không thủng cổ mà đi tiếp. Ghi lại."},
+{k:"chart",t:"Đo mục tiêu sau chữ M và W",b:"Đo khoảng cách từ đỉnh tới đường cổ. Sau khi thủng cổ, giá thường đi thêm một đoạn bằng khoảng đó. Đây là cách team ước lượng chốt lời. Không phải lúc nào cũng đúng, nhưng là thước đo có lý.",v:"Với chữ M hoặc W đã tìm, đo chiều cao và kiểm tra giá có đi được chừng đó không."},
+{k:"chart",t:"Hai đỉnh và tin tức",b:"Hai đỉnh hay hai đáy hay xuất hiện quanh các giờ tin lớn của Mỹ: giá bị đẩy mạnh, rồi quay lại thử. Mở forexfactory.com, mục Calendar, nhìn các dòng màu đỏ trong tuần. Đó là các giờ chị nên đứng ngoài, team cũng vậy.",v:"Ghi 3 tin đỏ của tuần này với giờ Việt Nam. Xem chart quanh 1 tin đã qua: giá làm gì?"},
+{k:"chart",t:"Dự đoán tuần này",b:"Nhìn H4 và H1. Có chữ M hay W nào đang hình thành? Đã qua cổ chưa? Ghi dự đoán hoặc ghi không có.",v:"Ghi dự đoán và ngày để kiểm tra."},
+{k:"tien",t:"Chủ nhật: đọc một báo cáo thật",b:"Giờ chị đã quen 4 ô của nhà mình. Thử đọc 4 ô của một công ty thật. Mở Google, gõ tên một công ty niêm yết chị biết kèm chữ báo cáo tài chính, mở bảng cân đối kế toán. Tìm 4 chữ: doanh thu, chi phí, tài sản, nợ phải trả. Chỉ tìm 4 chữ, chưa cần hiểu hết.",v:"Ghi tên công ty và 4 con số chị tìm được. Công ty đó tài sản lớn hơn nợ không?"}
+]},
+{n:8,phase:"Giai đoạn 2 · Năm mẫu hình",t:"Kênh giá và ôn 5 mẫu hình",goal:"Hết tuần chị có bảng 5 mẫu hình viết tay và đã tìm thấy mỗi mẫu ít nhất 1 lần trên chart thật.",days:[
+{k:"chart",t:"Kênh giá",b:"Hai đường song song, giá chạy ở giữa như trong hình chị chụp từ sách. Đường dưới là chuỗi đáy, đường trên là chuỗi đỉnh. Kênh đi lên gọi là kênh tăng. Trong kênh, chị quan tâm 2 chỗ: giá chạm đường dưới và giá chạm đường trên.",v:"Vẽ 1 kênh giá trên H4 (vẽ đường xu hướng qua các đáy, rồi copy song song qua các đỉnh). Giá đang ở gần cạnh nào?",f:"kenh"},
+{k:"chart",t:"Giá trong kênh làm gì",b:"Trong kênh tăng, giá hay bật từ đường dưới lên đường trên. Chạm đường dưới là chỗ phe mua hay xuất hiện. Chạm đường trên là chỗ giá hay nghỉ. Thoát kênh là chuyện lớn, cần nến đóng ngoài kênh.",v:"Đếm trong kênh đã vẽ: giá chạm đường dưới mấy lần, chạm đường trên mấy lần."},
+{k:"chart",t:"Kênh bị phá",b:"Kênh tăng bị phá xuống (nến đóng dưới đường dưới) là dấu hiệu xu hướng có thể đổi. Kênh tăng bị phá lên là giá tăng tốc. Cả hai trường hợp đều chờ nến đóng, chị đã quen chữ này rồi.",v:"Tìm 1 lần kênh bị phá trong 3 tháng qua. Phá hướng nào, giá sau đó ra sao?"},
+{k:"chart",t:"Khối lượng, con số bị bỏ quên",b:"Dưới chart có thanh Volume, đó là khối lượng, tức lượng giao dịch mỗi cây nến. Phá mốc với khối lượng lớn đáng tin hơn phá với khối lượng nhỏ. Sách gọi dữ kiện về giá và khối lượng là kỹ năng đầu tiên của cột kỹ thuật. Chị chỉ cần đọc thanh cao thanh thấp.",v:"Bật Volume. Tìm 1 lần phá mốc có khối lượng cao bất thường và 1 lần phá với khối lượng thấp. Lần nào đi tiếp?"},
+{k:"on",t:"Bảng 5 mẫu hình viết tay",b:"Tam giác tăng, tam giác giảm, hai đỉnh, hai đáy, kênh giá. Mỗi mẫu 3 dòng: hình trông thế nào, giá thường đi đâu, điều kiện xác nhận là gì. Viết tay vào sổ giấy. Viết tay nhớ lâu hơn gõ.",v:"Chụp bảng viết tay lưu vào máy. Ghi vào ô ghi chú: mẫu nào chị nhớ rõ nhất, mẫu nào còn lẫn."},
+{k:"on",t:"Ôn tháng 2: đọc trọn một biểu đồ",b:"Như ngày 27, nhưng lần này thêm mẫu hình và khối lượng vào bài đọc. H4 hướng gì, H1 mốc nào, có mẫu hình nào, nến tại mốc nói gì, khối lượng ủng hộ không, kết luận. Viết 8 đến 10 câu.",v:"Viết bài đọc chart thứ hai. So với bài ngày 27: chị thấy gì khác trong cách mình nhìn?"},
+{k:"tien",t:"Chủ nhật: bảng tháng thứ hai",b:"Lặp lại bảng 4 ô cho tháng mới. Lần này nhanh hơn vì đã có khung. So với tháng trước: số dư tăng hay giảm, tiêu sản bớt dòng nào chưa. Cột nền tảng của sách rốt cuộc là thói quen nhìn bảng này mỗi tháng, không phải phép tính khó.",v:"Ghi 2 con số tháng này và so với tháng trước, mỗi con số một dòng."}
+]},
+{n:9,phase:"Giai đoạn 3 · Đối chiếu kèo team",t:"Đọc trước, xem sau",goal:"Hết tuần chị có thói quen tự đọc chart trước khi mở bài của Lead.",days:[
+{k:"so",t:"Luật của giai đoạn 3",b:"Từ hôm nay, mỗi khi team đăng một kèo vàng, chị làm ngược: tự mở chart đọc trước, ghi hướng và mốc của chị, rồi mới mở bài của Lead so. Trùng hướng là Trùng. Khác hướng là Lệch. Ngày không có kèo, chị đọc chart vẫn ghi, và chọn Chưa so. Mục tiêu tới ngày 90: trùng 6 trên 10.",v:"Hôm nay có kèo nào không? Ghi dự đoán của chị trước, mở kèo sau, bấm Trùng hoặc Lệch bên dưới."},
+{k:"so",t:"Đọc mốc vào lệnh của team",b:"Mỗi kèo có 3 con số: giá vào, dừng lỗ (SL), chốt lời (TP). Nhìn chart của chị: giá vào của team có nằm tại mốc hỗ trợ kháng cự nào chị đã vẽ không? Nếu có, chị đã vẽ đúng chỗ team nhìn.",v:"Ghi: giá vào của kèo hôm nay có trùng mốc của chị không. Nếu không, mốc của team ở đâu, vì sao chị bỏ sót?"},
+{k:"so",t:"Dừng lỗ nằm ngoài mốc",b:"Bài số 2 trên kênh HARCOS nói: dừng lỗ đặt ngay ngoài mốc, chỗ mà ý tưởng đơn giản là sai. Nhìn SL của team hôm nay: nó nằm cách mốc bao xa? Đó là cách Lead nói tôi chấp nhận sai ở đây.",v:"Ghi SL của kèo hôm nay và mốc gần nó. Chị có đặt SL cùng chỗ không?"},
+{k:"so",t:"R, thước đo của mọi kèo",b:"Khoảng cách từ giá vào tới SL là 1R. Chốt lời cách giá vào 2R nghĩa là lời gấp đôi rủi ro. Team luôn ghi kết quả bằng R, không bằng tiền. Chị tập đọc kèo bằng R: kèo này TP bao nhiêu R?",v:"Tính R của kèo hôm nay: (TP trừ giá vào) chia (giá vào trừ SL). Ghi con số."},
+{k:"so",t:"Kèo đi ngược chị",b:"Sẽ có ngày chị đọc Lên mà team đánh Xuống. Đừng vội sửa ý mình. Ghi cả hai, chờ kết quả. Nếu chị đúng và team sai, cũng bình thường. Nếu team đúng, đọc lại bài của họ xem họ thấy gì chị không thấy. Đó mới là buổi học.",v:"Hôm nay trùng hay lệch? Nếu lệch, ghi 1 điều team nhìn thấy mà chị chưa."},
+{k:"so",t:"Tổng kết tuần đầu đối chiếu",b:"Đếm Trùng và Lệch của tuần. Chưa cần đạt 6/10, tuần đầu thường 3/10 hay 4/10. Quan trọng là chị đã có số thật của mình, lần đầu tiên.",v:"Ghi tỷ lệ tuần này và kiểu lệch hay gặp nhất."},
+{k:"tien",t:"Chủ nhật: tiền của kênh",b:"Áp 4 ô vào kênh Telegram đang vận hành: thu nhập của kênh (hoa hồng IB, vé), chi phí (nhân sự, ads, công cụ), tài sản (danh sách email, số thành viên, sách), tiêu sản (gói đăng ký không dùng). Kênh là công ty ABC của chị.",v:"Điền 4 ô cho một kênh. Dòng nào chị không có số thật, ghi chưa biết, đừng đoán."}
+]},
+{n:10,phase:"Giai đoạn 3 · Đối chiếu kèo team",t:"Nhìn thấy lý do",goal:"Hết tuần chị nói được vì sao team vào kèo đó bằng lời của chị, trước khi đọc lời của họ.",days:[
+{k:"so",t:"Đoán cả lý do",b:"Nâng cấp: ngoài hướng, chị đoán cả lý do team sẽ ghi. Mốc nào, nến nào, mẫu hình nào. Rồi so với bài của Lead. Trùng lý do khó hơn trùng hướng nhiều.",v:"Ghi hướng và lý do của chị, rồi so. Bấm Trùng nếu trùng hướng. Ghi thêm: lý do có trùng không."},
+{k:"so",t:"Kèo không vào",b:"Có ngày team không đăng kèo. Hỏi: vì sao? H4 đang đợi? Sắp tin đỏ? Giá giữa hộp? Nhận ra lý do không vào cũng là kỹ năng, và là kỹ năng người mới thiếu nhất.",v:"Nếu hôm nay không kèo: ghi lý do chị nghĩ team đứng ngoài. Nếu có kèo: làm như thường."},
+{k:"so",t:"Cập nhật giữa kèo",b:"Team đăng cập nhật khi kèo đang chạy: dời SL về hòa vốn, chốt một phần. Nhìn chart lúc đó: giá vừa qua mốc nào khiến họ làm vậy? Mỗi cập nhật là một bài đọc chart nhỏ.",v:"Tìm 1 bài cập nhật của team trong tuần. Ghi mốc nào trên chart đứng sau quyết định đó."},
+{k:"so",t:"Kết quả 6 trạng thái",b:"Team ghi kết quả bằng 6 trạng thái: TP đủ, TP một phần, hòa vốn, SL, hủy, hết hạn. Mỗi trạng thái kèm R. Chị đọc 5 kết quả gần nhất và cộng R lại. Con số tổng mới là câu chuyện thật, không phải một kèo thắng.",v:"Cộng R của 5 kèo gần nhất. Ghi tổng. Dương hay âm?"},
+{k:"so",t:"Kèo trong giờ tin",b:"Mở lịch forexfactory, đối chiếu với giờ team vào kèo tuần này. Team có vào kèo trong 30 phút trước tin đỏ không? Thường là không. Nếu thấy có, đó là câu hỏi đáng hỏi Lead.",v:"Ghi: tuần này tin đỏ giờ nào, kèo team giờ nào, có đụng nhau không."},
+{k:"so",t:"Tổng kết tuần 10",b:"Đếm Trùng và Lệch. So với tuần 9. Nếu không tăng, đừng lo, kỹ năng này lên theo bậc thang chứ không theo đường thẳng, y như xu hướng.",v:"Ghi tỷ lệ tuần này, và một điều chị làm khác tuần trước."},
+{k:"tien",t:"Chủ nhật: bảng dòng tiền 3 tháng",b:"Chị có 2 bảng tháng rồi, sắp có bảng thứ 3. Đặt cạnh nhau thành 3 cột. Nhìn xu hướng của chính nhà mình: số dư đang lên, xuống hay đi ngang? Chị vừa áp đúng kỹ năng đọc xu hướng vào cột nền tảng.",v:"Ghi xu hướng số dư 3 tháng bằng đúng 3 chữ chị học ở tuần 2: lên, xuống, hay đợi."}
+]},
+{n:11,phase:"Giai đoạn 3 · Đối chiếu kèo team",t:"Đọc như Lead",goal:"Hết tuần chị viết được một bài kèo giả định đầy đủ như team, trên giấy.",days:[
+{k:"so",t:"Viết kèo của chị",b:"Hôm nay chị viết trọn một bài kèo trên giấy theo mẫu team: hướng, giá vào, SL, TP, R, lý do 2 câu. Không đăng ở đâu cả. Rồi so với kèo thật của team nếu có.",v:"Viết kèo giấy đầy đủ vào ô ghi chú. So với team, bấm Trùng hoặc Lệch."},
+{k:"so",t:"Theo kèo giấy tới cùng",b:"Kèo giấy hôm qua: giá đã đi đâu? Chạm TP, chạm SL, hay còn chạy? Ghi kết quả bằng R. Đây là cách duy nhất học mà không mất tiền: theo dõi kèo giấy tới khi nó đóng.",v:"Ghi kết quả kèo giấy hôm qua bằng 1 trong 6 trạng thái và R."},
+{k:"so",t:"Kèo giấy thứ hai",b:"Viết kèo giấy thứ hai. Lần này bắt buộc có điều kiện vào: chỉ vào khi nến M30 đóng cửa cùng hướng H4 tại mốc H1. Nếu điều kiện không xảy ra, kèo không kích hoạt, ghi hủy. Hủy cũng là một kết quả tốt.",v:"Viết kèo giấy kèm điều kiện. So với team. Bấm Trùng hoặc Lệch."},
+{k:"so",t:"Duyệt bài của Lead bằng mắt mới",b:"Chị là người duyệt nội dung kênh. Hôm nay đọc 1 bài kèo của Lead và hỏi 4 câu: có nêu mốc không, có nêu SL không, có R không, có câu nào hứa lợi nhuận không. Bài thiếu 1 trong 3 cái đầu hoặc có cái thứ 4 là bài cần sửa.",v:"Ghi kết quả 4 câu cho 1 bài. Chị đã duyệt bài bằng kỹ năng, không bằng cảm giác."},
+{k:"so",t:"Bán khống, chỉ hiểu chưa làm",b:"Sách ghi bán khống là kỹ năng cột kỹ thuật. Trên vàng, mỗi kèo Xuống của team chính là bán khống: bán trước ở giá cao, mua lại sau ở giá thấp. Chị đã đọc kèo Xuống nhiều tuần rồi, hôm nay chỉ gắn tên cho nó. Quyền chọn thì để sau 90 ngày.",v:"Đếm trong 2 tuần qua team có bao nhiêu kèo Xuống. Ghi lại bằng lời: bán khống nghĩa là gì."},
+{k:"so",t:"Tổng kết tuần 11",b:"Đếm Trùng và Lệch cả 3 tuần. Chị đang ở bao nhiêu trên 10? Còn 1 tuần.",v:"Ghi tỷ lệ 3 tuần gộp và cảm giác thật của chị khi tự đọc chart bây giờ so với ngày 1."},
+{k:"tien",t:"Chủ nhật: một quyết định từ bảng",b:"Ba bảng tháng đã cho chị một bức tranh. Hôm nay chị ra đúng một quyết định nhỏ từ nó: cắt một tiêu sản, hoặc chuyển một khoản dư nhỏ thành tài sản. Một quyết định, nhỏ, làm thật trong tuần tới.",v:"Ghi quyết định đó và ngày sẽ làm."}
+]},
+{n:12,phase:"Giai đoạn 3 · Đối chiếu kèo team",t:"Làm cho đều",goal:"Hết tuần chị đối chiếu đều 6 ngày không sót ngày nào.",days:[
+{k:"so",t:"Đối chiếu như thường",b:"Không thêm gì mới. Đọc trước, so sau, bấm Trùng hoặc Lệch. Hai tuần cuối chị chỉ làm cho đều, vì đều mới ra số thật.",v:"Dự đoán, so, bấm."},
+{k:"so",t:"Đọc nhanh trong 5 phút",b:"Giới hạn 5 phút cho 3 khung. Người có kỹ năng đọc nhanh vì họ biết nhìn vào đâu, không phải vì họ nhìn nhiều hơn. Chị bấm giờ.",v:"Ghi: đọc xong trong mấy phút. Dự đoán, so, bấm."},
+{k:"so",t:"Đọc thử một chart khác",b:"Đọc cặp EURUSD bằng cùng quy trình. Nếu quy trình chạy được trên chart khác, chị đã có kỹ năng chứ không phải thói quen với một chart.",v:"Ghi hướng H4 của EURUSD hôm nay. Rồi làm vàng như thường."},
+{k:"so",t:"Đối chiếu như thường",b:"Hôm nay để ý một điều: chị có bị bài đăng của Lead kéo đổi ý sau khi đã ghi dự đoán không? Nếu có, giữ nguyên dự đoán gốc khi bấm Trùng hoặc Lệch. Số thật cần dự đoán thật.",v:"Dự đoán, so, bấm. Ghi thêm: chị có muốn đổi ý sau khi xem bài team không."},
+{k:"so",t:"Đọc một kèo đã đóng từ đầu tới cuối",b:"Chọn 1 kèo của team đã có kết quả. Đọc lại theo thứ tự: bài vào kèo, các bài cập nhật, bài kết quả, bài recap. Đó là vòng đời 6 bước của một kèo. Chị đã hiểu cả vòng, không chỉ lúc vào.",v:"Ghi R cuối cùng của kèo đó và 1 điều chị học từ bài recap."},
+{k:"so",t:"Tổng kết tuần 12",b:"Đếm Trùng và Lệch 4 tuần gộp. Còn đúng 1 tuần nữa.",v:"Ghi tỷ lệ 4 tuần gộp."},
+{k:"tien",t:"Chủ nhật: kiểm tra quyết định tuần trước",b:"Tuần trước chị ra một quyết định nhỏ từ bảng 4 ô. Đã làm chưa? Nếu đã làm, bảng tháng sau sẽ thay đổi ở ô nào? Nếu chưa, vì sao, và chọn ngày lại. Cột nền tảng rốt cuộc là làm theo bảng, không chỉ nhìn bảng.",v:"Ghi: đã làm hay chưa, và ô nào trong 4 ô sẽ đổi."}
+]},
+{n:13,phase:"Giai đoạn 3 · Đối chiếu kèo team",t:"Tuần cuối, số thật",goal:"Ngày 90 chị có con số trùng/lệch thật và biết bước tiếp theo.",days:[
+{k:"so",t:"Đối chiếu như thường",b:"Tuần cuối. Làm y như 4 tuần qua.",v:"Dự đoán, so, bấm."},
+{k:"so",t:"Đối chiếu như thường",b:"Hôm nay đọc cả khối lượng khi dự đoán: phá mốc có khối lượng ủng hộ không. Thêm một mắt nhìn vào bài đọc quen.",v:"Dự đoán kèm nhận xét khối lượng, so, bấm."},
+{k:"so",t:"Đối chiếu như thường",b:"Hôm nay thử đọc trước giờ team thường đăng, rồi đợi bài. Nếu chị đọc đúng mốc trước cả khi bài ra, chị đang nhìn cùng chỗ với Lead.",v:"Dự đoán trước giờ đăng, so, bấm."},
+{k:"on",t:"Bài đọc chart thứ ba",b:"Đọc lại bài ngày 27 và ngày 55 của chị. Rồi viết bài ngày 88 theo cùng khung, 8 đến 10 câu. Ba bài, ba tháng, đặt cạnh nhau là thấy mình đã đi được bao xa.",v:"Viết bài đọc chart thứ ba. Ghi 1 câu: điều chị nhìn thấy bây giờ mà ngày 27 chị không thấy."},
+{k:"on",t:"Chốt số 90 ngày",b:"Tổng Trùng trên tổng kèo đã so. Trên 6/10: chị đã có kỹ năng số 2 của sách ở mức dùng được. Dưới 6/10: lặp lại giai đoạn 3 thêm 4 tuần, không cần học lại từ đầu, chỉ cần thêm số. Dù số nào, chị đã đọc chart 90 ngày liền, điều ít người làm nổi.",v:"Ghi con số cuối và câu trả lời: lặp giai đoạn 3, hay bước sang bước kế?"},
+{k:"on",t:"Bước kế tiếp, vẫn chưa cần tiền",b:"Nếu đã qua 6/10, bước tiếp là 30 ngày tài khoản demo (tiền ảo, sàn nào cũng cho mở miễn phí) với đúng quy trình và kèo giấy. Chỉ sau khi demo có tổng R dương 30 ngày, câu hỏi về tiền thật mới được đặt ra, và lúc đó chị đặt nó với số tiền chị sẵn sàng mất hết. Cột nền tảng: giữ bảng 4 ô mỗi tháng, mãi mãi.",v:"Ghi kế hoạch 30 ngày tiếp theo bằng 3 dòng."}
+]}
+];
+
+// ---------- TRẠNG THÁI ----------
+let state = {done:{}, notes:{}, kq:{}, stamp:{}};
+let dbRef = null, saveTimer=null, saving=false, dirty=false;
+const LS_KEY='sotay90-v1';
+
+function loadLocal(){try{const s=localStorage.getItem(LS_KEY);if(s)state=Object.assign(state,JSON.parse(s));}catch(e){}}
+function saveLocal(){try{localStorage.setItem(LS_KEY,JSON.stringify(state));}catch(e){}}
+function flash(){const el=document.getElementById('saved');el.classList.add('show');setTimeout(()=>el.classList.remove('show'),1200);}
+function queueSave(){saveLocal();dirty=true;clearTimeout(saveTimer);saveTimer=setTimeout(pushDb,700);}
+async function pushDb(){
+  if(!dbRef||saving){return;}
+  saving=true;dirty=false;
+  try{await dbRef.set(JSON.parse(JSON.stringify(state)));flash();}catch(e){}
+  saving=false;
+  if(dirty)pushDb();
+}
+
+// ---------- VẼ ----------
+const allDays=[];WEEKS.forEach(w=>w.days.forEach(d=>{d.n=allDays.length+1;d.w=w.n;allDays.push(d);}));
+const KINDLBL={chart:"Đọc chart",tien:"Bảng tiền",so:"Đối chiếu",on:"Ôn tập"};
+
+function build(){
+  const host=document.getElementById('weeks');
+  let html='';
+  WEEKS.forEach(w=>{
+    html+=`<section class="week" id="w${w.n}"><div class="weekhead"><span class="n">Tuần ${w.n} · ${w.phase}</span><h2>${w.t}</h2><span class="goal">${w.goal}</span></div>`;
+    w.days.forEach(d=>{
+      const done=!!state.done[d.n];
+      html+=`<article class="day${done?' done':''}" id="d${d.n}" data-n="${d.n}">
+<div class="dayhead" onclick="toggle(${d.n})">
+  <span class="chk" role="checkbox" tabindex="0" aria-checked="${done}" aria-label="Xong ngày ${d.n}" onclick="event.stopPropagation();tick(${d.n},this)" onkeydown="if(event.key===' '||event.key==='Enter'){event.preventDefault();event.stopPropagation();tick(${d.n},this)}">${done?'✓':''}</span>
+  <span class="num">Ngày ${d.n}</span>
+  <span class="ttl">${d.t}</span>
+  <span class="tag ${d.k}">${KINDLBL[d.k]}</span>
+</div>
+<div class="daybody">
+  <p>${d.b}</p>
+  ${d.f?`<figure>${FIG[d.f]}</figure>`:''}
+  <div class="lbl">Việc hôm nay, 15 phút</div>
+  <div class="viec">${d.v}</div>
+  <div class="lbl">Ghi chú của chị</div>
+  <textarea id="note${d.n}" placeholder="Ghi dự đoán, con số, cảm nhận. Tự lưu." oninput="note(${d.n},this.value)">${esc(state.notes[d.n]||'')}</textarea>
+  ${d.k==='so'?`<div class="lbl">So với kèo team</div><div class="kq" id="kq${d.n}">
+    <button type="button" class="${state.kq[d.n]==='trung'?'sel-trung':''}" onclick="setKq(${d.n},'trung',this)">Trùng hướng</button>
+    <button type="button" class="${state.kq[d.n]==='lech'?'sel-lech':''}" onclick="setKq(${d.n},'lech',this)">Lệch hướng</button>
+    <button type="button" onclick="setKq(${d.n},'',this)">Chưa so / không kèo</button></div>`:''}
+</div></article>`;
+    });
+    html+='</section>';
+  });
+  host.innerHTML=html;
+  const rail=document.getElementById('rail');
+  let r='',ph='';
+  WEEKS.forEach(w=>{if(w.phase!==ph){ph=w.phase;r+=`<div class="ph">${ph.split('·')[0]}</div>`;}r+=`<a href="#w${w.n}" id="r${w.n}">Tuần ${w.n}<small id="rc${w.n}"></small></a>`;});
+  rail.innerHTML=r;
+  refreshStats();
+  // mở ngày kế tiếp
+  const nxt=nextDay();document.getElementById('d'+nxt).classList.add('open','today');
+}
+function esc(s){return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;');}
+function nextDay(){for(const d of allDays){if(!state.done[d.n])return d.n;}return 90;}
+
+// thao tác nhỏ: chỉ đổi tại chỗ, không vẽ lại danh sách (luật app của chị)
+function toggle(n){document.getElementById('d'+n).classList.toggle('open');}
+function tick(n,el){
+  const card=document.getElementById('d'+n);
+  const now=!state.done[n];
+  if(now){state.done[n]=true;state.stamp[n]=new Date().toISOString().slice(0,10);}else{delete state.done[n];delete state.stamp[n];}
+  card.classList.toggle('done',now);
+  el.textContent=now?'✓':'';el.setAttribute('aria-checked',now);
+  // chuyển viền "hôm nay" sang ngày kế, không cuộn
+  document.querySelectorAll('.day.today').forEach(x=>x.classList.remove('today'));
+  document.getElementById('d'+nextDay()).classList.add('today');
+  refreshStats();queueSave();
+}
+function note(n,v){state.notes[n]=v;queueSave();}
+function setKq(n,v,btn){
+  if(v)state.kq[n]=v;else delete state.kq[n];
+  const box=document.getElementById('kq'+n);
+  box.querySelectorAll('button').forEach(b=>b.className='');
+  if(v==='trung')btn.className='sel-trung';if(v==='lech')btn.className='sel-lech';
+  refreshStats();queueSave();
+}
+function refreshStats(){
+  const doneN=Object.keys(state.done).length;
+  document.getElementById('sDone').textContent=doneN;
+  document.getElementById('bar').style.width=(doneN/90*100)+'%';
+  document.getElementById('barlab').textContent=Math.round(doneN/90*100)+'% chặng đường';
+  // streak: số ngày liên tiếp xong tính từ ngày 1 (theo thứ tự sổ)
+  let st=0;for(const d of allDays){if(state.done[d.n])st++;else break;}
+  document.getElementById('sStreak').textContent=st;
+  let tr=0,tot=0;Object.values(state.kq).forEach(v=>{if(v){tot++;if(v==='trung')tr++;}});
+  document.getElementById('sTrung').textContent=tr+'/'+tot;
+  let tien=0;allDays.forEach(d=>{if(d.k==='tien'&&state.done[d.n])tien++;});
+  document.getElementById('sTien').textContent=tien+'/12';
+  WEEKS.forEach(w=>{const c=w.days.filter(d=>state.done[d.n]).length;const a=document.getElementById('r'+w.n);const s=document.getElementById('rc'+w.n);if(s){s.textContent=c+'/'+w.days.length;}a.classList.toggle('full',c===w.days.length);});
+  const cur=allDays[nextDay()-1];document.querySelectorAll('nav.rail a').forEach(a=>a.classList.remove('cur'));document.getElementById('r'+cur.w).classList.add('cur');
+  document.getElementById('sumBig').textContent=doneN+' / 90';
+  const t=document.getElementById('sumText');
+  if(doneN===0)t.textContent='Chị chưa bắt đầu. Bấm vào Ngày 1 để mở việc đầu tiên.';
+  else if(doneN<90)t.textContent=`Việc kế tiếp là Ngày ${nextDay()}. ${tot>=10?(tr/tot>=0.6?'Tỷ lệ trùng đã qua 6/10.':'Tỷ lệ trùng chưa tới 6/10, cứ tiếp tục.'):'Tỷ lệ trùng sẽ có nghĩa khi so đủ 10 kèo.'}`;
+  else t.textContent=tot&&tr/tot>=0.6?'Xong 90 ngày và trùng trên 6/10. Chị đã có kỹ năng đọc biểu đồ ở mức dùng được. Bước kế: 30 ngày demo.':'Xong 90 ngày. Lặp lại giai đoạn 3 thêm 4 tuần để lấy số trùng trên 6/10, không cần học lại từ đầu.';
+}
+document.getElementById('btnToday').onclick=()=>{const n=nextDay();const c=document.getElementById('d'+n);c.classList.add('open');c.scrollIntoView({behavior:'smooth',block:'start'});};
+document.getElementById('btnExport').onclick=async()=>{
+  let out='SỔ TAY 90 NGÀY · ghi chú\n\n';
+  allDays.forEach(d=>{if(state.notes[d.n]||state.done[d.n]){out+=`Ngày ${d.n} · ${d.t}${state.done[d.n]?' ✓ '+(state.stamp[d.n]||''):''}${state.kq[d.n]?' · '+(state.kq[d.n]==='trung'?'Trùng':'Lệch'):''}\n${state.notes[d.n]||''}\n\n`;}});
+  try{await navigator.clipboard.writeText(out);alert('Đã sao chép ghi chú. Dán vào Ghi chú hoặc gửi cho em.');}catch(e){prompt('Chọn hết rồi copy:',out);}
+};
+
+// ---------- KHỞI ĐỘNG ----------
+loadLocal();build();
+(async()=>{
+  try{
+    const [db,user]=await Promise.all([window.claude?.use?.('db'),window.claude?.use?.('user')]);
+    if(!db||!user)return;
+    const uid=await user.id();if(!uid)return;
+    dbRef=db.doc('data/users/'+uid+'/sotay90');
+    const snap=await dbRef.get();
+    if(snap.exists){
+      const remote=snap.data()||{};
+      const rn=Object.keys(remote.done||{}).length, ln=Object.keys(state.done).length;
+      if(rn>ln||(rn===ln&&JSON.stringify(remote.notes||{}).length>JSON.stringify(state.notes).length)){
+        state={done:remote.done||{},notes:remote.notes||{},kq:remote.kq||{},stamp:remote.stamp||{}};saveLocal();build();
+      }else if(ln>0){pushDb();}
+    }else if(Object.keys(state.done).length||Object.keys(state.notes).length){pushDb();}
+  }catch(e){}
+})();
+</script>
+</body></html>
